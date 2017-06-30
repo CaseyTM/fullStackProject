@@ -20,7 +20,7 @@ app.set('index','index');
 app.use('/static',express.static('static'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(expressValidator());
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 app.use(session({
   secret: 'holy moly',
   resave: false,
@@ -28,10 +28,10 @@ app.use(session({
 }));
 app.use(routes);
 
-
+ 
   
  
 // establish server at a given port
 app.listen(8000,function(){
 	console.log('Gabble Server is running');
-});
+}); 
