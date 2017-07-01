@@ -1,30 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>login page</title>
-	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
-</head>
-<body>
-	<div class="container">
-	{{test}}
-		<nav class="navbar">
-			<div class="home nav-links"><a href="#">Home Linkage</a></div>
-			<div class="login nav-links"><a href="#">Login Linkage</a></div>
-			<div class="logout nav-links"><a href="#">Logout Linkage</a></div>
-			<div class="new-gab nav-links"><a href="#">Create a new gab</a></div>
-		</nav>
-<!-- Navbar remains consistent throughout all pages -->
+<div class="login">
 	<div class="errors">
 	{{#errors}} {{.}} {{/errors}}
 	</div>
-
-
-
-		<form action="/login" method="post">
-			<input type="text" name="username" placeholder="Enter username">
-			<input type="password" name="password" placeholder="Enter Password">
-			<input type="submit" value="Sign Up">
-		</form>
-	</div>
-</body>
-</html>
+	<form action="/login" method="post">
+		<input type="text" name="username" placeholder="Enter username">
+		<input type="password" name="password" placeholder="Enter Password">
+		<input type="submit" value="Sign Up">
+	</form>
+</div>

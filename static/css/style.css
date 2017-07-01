@@ -1,6 +1,10 @@
-.navbar{
+.navbar-top{
 	display: flex;
 	justify-content: space-around;
+}
+.navbar{
+	outline: 4px solid black;
+	margin-bottom: 10vw;
 }
 input{
 	width: 40vw;
@@ -23,3 +27,32 @@ form{
 	flex-direction: column;
 	justify-content: space-evenly;
 }
+.crowd{
+	background-image: url('/static/img/crowd.jpeg');
+	background-size: cover;
+	background-position: center center;
+	color: white;
+	font-size: 80px;
+	text-align: center;
+}
+.gabble-wrapper{
+	margin-top: 20px;
+	outline: 4px solid black;
+}
+.index{
+	margin: auto;
+	text-align: center;
+	min-width: 80vw;
+	max-width: 80vw;
+}
+.gabble-tools{
+	display: flex;
+	justify-content: flex-end;
+	outline: 2px solid black;
+}
+.tool{
+	font-size: 20px;
+	width: 20vw;
+	outline: 1px solid black;
+}
+

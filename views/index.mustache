@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Babble</title>
-	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
-</head>
-<body>
-	<div class="container">
-		<nav class="navbar">
-			<div class="home nav-links"><a href="#">Home Linkage</a></div>
-			<div class="login nav-links"><a href="#">Login Linkage</a></div>
-			<div class="logout nav-links"><a href="#">Logout Linkage</a></div>
-			<div class="new-gab nav-links"><a href="#">Create a new gab</a></div>
-		</nav>
-<!-- Navbar remains consistent throughout all pages -->
-
-
-
-
-
-		<div class="welcome">Welcome to the Home Page {{userName}} </div>
+<div class="index">
+	<div class="welcome">Welcome to the Home Page {{userName}} </div>
+	{{#message}}
+	<div class="gabble-wrapper">
+		<div class="gabble">
+		{{.}}
+		</div>
+		<div class="gabble-tools">
+			<div class="likes tool">
+				like
+			</div>
+			<div class="delete tool">
+				delete
+			</div>
+		</div>
 	</div>
-</body>
-</html> 
+	{{/message}}
+</div>

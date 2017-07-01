@@ -3,8 +3,9 @@ const express = require('express');
 const router = express.Router();
 const models = ""; 
 // require("./models");
-
-
+let gabbles = ["im the first gabbleim the first gabbleim the first gabbleim the first gabbleim the first gabbleim the first gabble", "im the second gabbleim the second gabbleim the second gabbleim the second gabbleim the second gabbleim the second gabbleim the second gabble",
+	"im the third gabble","im the fourthim the fourthim the fourth"]
+ 
 
 
 // set up root route to take us to either the main page or to login
@@ -16,19 +17,19 @@ router.get('/',function(req,res){
 	// if logged in then send to the main page with user info
 
 	if(req.session.username){	
-		console.log("entering IF IFFFFFF")
+
 		
 		// res.render('index',{userName: "Casey"});
 		res.redirect('/home');
-		console.log("after the redirect")
+
 		// res.render('index',{userName: req.session.user});
 	}else{
 		res.redirect('/login');
-		console.log("do dis run?");
+
 	}
 	
 });
-
+ 
 
 router.get('/login',function(req,res){
 	res.render('login');
@@ -43,12 +44,8 @@ let users = [];
 let messages = [];
 
 router.post('/login',function(req,res){
-	console.log("you have entered router POST POST POST")
 	let loggedUser;
 	messages = [];
-
-
-
 	users.forEach(function(user){
 		if(user.username === req.body.username){
 			loggedUser = user;
@@ -76,13 +73,14 @@ router.post('/login',function(req,res){
 		req.session.username = req.body.username;
 		users.push({username:req.body.username,password:req.body.password});
 		console.log("username on session is " + req.session.username);
+		console.log(users)
 		res.redirect('/home')
-	}
+	} 
 
 });
 
 router.get('/home',function(req,res){
-	res.render('index');
+	res.render('index',{message:gabbles});
 });
 
 module.exports = router;     
