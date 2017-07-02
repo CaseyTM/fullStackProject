@@ -9,6 +9,8 @@ const userRouter = require('./users.js');
 const handleLogin = function(req,res,next){
 	if(!req.session.username){
 		res.redirect('/login');
+	}else{
+		next();
 	}
 }
 
@@ -21,24 +23,7 @@ let gabbles = ["im the first gabbleim the first gabbleim the first gabbleim the 
 
 // set up root route to take us to either the main page or to login
 router.get('/',function(req,res){
-
-	console.log("just inside the root route " +req.session.username)
-	console.log(req.session)
-
-	// if logged in then send to the main page with user info
-
-	if(req.session.username){	
-
-		
-		// res.render('index',{userName: "Casey"});
-		res.redirect('/home');
-
-		// res.render('index',{userName: req.session.user});
-	}else{
-		res.redirect('/login');
-
-	}
-	
+		res.redirect('/home');	
 });
  
 
@@ -90,7 +75,7 @@ router.post('/login',function(req,res){
 
 });
 
-router.get('/home',function(req,res){
+router.get('/home', handleLogin, function(req,res){
 	res.render('index',{message:gabbles,userName:req.session.username});
 });
 
