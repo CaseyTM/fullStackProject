@@ -1,10 +1,36 @@
+body{
+	margin: 0px;
+	max-height: 200vh;
+}
+a{
+	color: white;
+}
+a:link{
+	color: white;
+}
+a:visited{
+
+}
+a:hover{
+
+}
+a:active{
+
+}
+.gabble-owner{
+	border-bottom: ;
+}
 .navbar-top{
 	display: flex;
 	justify-content: space-around;
+	background-color: #93a1ac;
+	align-items: center;
+	height: 6vh;
 }
 .navbar{
-	outline: 4px solid black;
 	margin-bottom: 10vw;
+	outline: 2px solid black;
+	position: fixed;
 }
 input{
 	width: 40vw;
@@ -32,12 +58,23 @@ form{
 	background-size: cover;
 	background-position: center center;
 	color: white;
-	font-size: 80px;
 	text-align: center;
+	height: 120px;
+	border: 1px solid black;
+	width: 100vw;
+}
+.head{
+	font-size: 30px;
+}
+.sub-head{
+	font-size: 12px;
 }
 .gabble-wrapper{
 	margin-top: 20px;
-	outline: 4px solid black;
+	outline: 2px solid black;
+}
+.login,.index{
+	padding-top: 200px;
 }
 .index{
 	margin: auto;
@@ -54,5 +91,15 @@ form{
 	font-size: 20px;
 	width: 20vw;
 	outline: 1px solid black;
+}
+.delete{
+	background-color: red;
+}
+.likes{
+	background-color: green;
+}
+.errors{
+	text-align: center;
+	border-bottom: 1px dashed red;
 }
 

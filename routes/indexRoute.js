@@ -1,10 +1,21 @@
 // establish router needs
 const express = require('express');
 const router = express.Router();
-const models = ""; 
-// require("./models");
+const models = require('../models'); 
+const homeRouter = require('./home.js');
+const postRouter = require('./posts.js');
+const userRouter = require('./users.js');
+
+const handleLogin = function(req,res,next){
+	if(!req.session.username){
+		res.redirect('/login');
+	}
+}
+
+
+
 let gabbles = ["im the first gabbleim the first gabbleim the first gabbleim the first gabbleim the first gabbleim the first gabble", "im the second gabbleim the second gabbleim the second gabbleim the second gabbleim the second gabbleim the second gabbleim the second gabble",
-	"im the third gabble","im the fourthim the fourthim the fourth"]
+	"im the thirasd;lkfjasd;lkfjasd;fkljasd;lfjsadfja;lsdfjas;lkdfja;sdlkfja;sdlkfja;sdlkfjasd;lkfjasd;flkjasd;flkjasd;flkjasd;flkajsdf;lksajdf;lakjsdf;lkasjdfl;kasjdflk;asdjflk;asdjf;alskdfja;lskdfjas;dlfjkasd;flkjd gabble","im the fourthim the fourthim the fourth","im the fourthim the fourthim the fourth","im the fourthim the fourthim the fourth","im the fourthim the fourthim the fourth","im the fourthim the fourthim the fourth","sakdjflksdjflksdjflkdjsflkjlksdjflksdjflksjdflksdjflkdjsfl ksdjflksdjflskdfjdffkjsdlfkjdslfkjsdflkjsdfkljdlkjweoiruweoiruweoiryweioryweoriyewoiruweroiuisdufoidsufoisdfuoidufsoidfusdoifusoidfu soidfuosdifusdoifusoifudsoidfusoidfusoidfusoidfusoidfusdoifusodifusdofuim the fourthim the fourthim the fourth","im the fourthim the fourthim the fourth"]
  
 
 
@@ -42,9 +53,9 @@ router.get('/login',function(req,res){
 // 	{username:'aubreyaubrey',password:'aubreyaubrey'}];
 let users = [];
 let messages = [];
+	let loggedUser;
 
 router.post('/login',function(req,res){
-	let loggedUser;
 	messages = [];
 	users.forEach(function(user){
 		if(user.username === req.body.username){
@@ -55,8 +66,8 @@ router.post('/login',function(req,res){
 
 
 	// run checks on the data coming in from the form
-	req.checkBody('username','Make sure to enter a valid username. It must contain at least 3 characters and no more than 20').notEmpty().isLength({min:3,max:20});
-	req.checkBody('password','Make sure to enter a valid Password.').notEmpty().isLength({min:8,max:20});
+	req.checkBody('username','Make sure to enter a valid username.(3-20 characters)').isLength({min:3,max:20});
+	req.checkBody('password','Make sure to enter a valid Password.(8-20 characters)').isLength({min:8,max:20});
 	// req.checkBody('password','Invalid combination of password and username').equals(loggedUser.password);
 
 	// make an array to hold the errors from validation
@@ -80,7 +91,7 @@ router.post('/login',function(req,res){
 });
 
 router.get('/home',function(req,res){
-	res.render('index',{message:gabbles});
+	res.render('index',{message:gabbles,userName:req.session.username});
 });
 
 module.exports = router;     
